@@ -1,12 +1,14 @@
-const  App = () => {
+import { Header } from "./components/Header";
 
+const App = () => {
   return (
     <>
       <div>
-         <h1 className="text-center text-red-500">New project</h1>
+        <Header />
       </div>
     </>
-  )
-}
+  );
+};
 
-export default App
+export default App;
+
