@@ -2,6 +2,7 @@ import { Header } from "./components/Header";
 import { TopBenefits } from "./components/TopBenefits";
 import Founder from "./components/Founder";
 import ProductWorks from "./components/ProductWorks";
+import UserGenerated from "./components/UserGenerated";
 
 const App = () => {
   return (
@@ -11,6 +12,7 @@ const App = () => {
         <TopBenefits  />
         <Founder />
         <ProductWorks />
+        <UserGenerated />
       </div>
     </>
   );
