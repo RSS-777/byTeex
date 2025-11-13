@@ -3,6 +3,7 @@ import { TopBenefits } from "./components/TopBenefits";
 import Founder from "./components/Founder";
 import ProductWorks from "./components/ProductWorks";
 import UserGenerated from "./components/UserGenerated";
+import Faq from "./components/Faq";
 
 const App = () => {
   return (
@@ -13,6 +14,7 @@ const App = () => {
         <Founder />
         <ProductWorks />
         <UserGenerated />
+        <Faq />
       </div>
     </>
   );
