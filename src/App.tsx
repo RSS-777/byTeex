@@ -4,6 +4,7 @@ import Founder from "./components/Founder";
 import ProductWorks from "./components/ProductWorks";
 import UserGenerated from "./components/UserGenerated";
 import Faq from "./components/Faq";
+import Banner from "./components/Banner";
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
         <ProductWorks />
         <UserGenerated />
         <Faq />
+        <Banner />
       </div>
     </>
   );
