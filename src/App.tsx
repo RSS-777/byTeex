@@ -5,6 +5,7 @@ import ProductWorks from "./components/ProductWorks";
 import UserGenerated from "./components/UserGenerated";
 import Faq from "./components/Faq";
 import Banner from "./components/Banner";
+import Final from "./components/Final";
 
 const App = () => {
   return (
@@ -17,10 +18,10 @@ const App = () => {
         <UserGenerated />
         <Faq />
         <Banner />
+        <Final />
       </div>
     </>
   );
 };
 
 export default App;
-
