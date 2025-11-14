@@ -10,7 +10,7 @@ export const Founder: React.FC = () => {
   if (!founder) return <p className="p-6 text-center">No founder data found</p>;
 
   return (
-    <section className="w-full bg-gray-100 py-12 lg:py-20">
+    <section className="w-full bg-gray-100 pt-[39px] md:pt-[83px]">
       <div className="container mx-auto px-6">
         <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-16">
           <div className="w-full lg:w-1/3">

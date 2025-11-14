@@ -31,22 +31,33 @@ h1 {
   letter-spacing: 0.04em;
 }
 
-@media screen and (min-width: 480px) {
-
+h2 {
+  font-weight: 400;
+  font-style: normal;
+  font-size: clamp(26px, 4vw, 32px);
+  line-height: clamp(34px, 5vw, 40px);
 }
 
-@media screen and (min-width: 768px) {
-
+.swiper-pagination {
+  position: relative !important;
+  padding: 12px;
 }
 
-@media screen and (min-width: 1024px) {
-
+.swiper-pagination-bullet {
+  width: 10px;
+  height: 10px;
+  background-color: #ccc;
+  opacity: 1;
 }
 
-@media screen and (min-width: 1440px) {
-
+.swiper-pagination-bullet-active {
+  background-color: black !important;
 }
- /* sm: '640px',   
-    md: '768px',   
-    lg: '1024px',  
-    xl: '1280px',   */
+
+@media screen and (min-width: 480px) {}
+
+@media screen and (min-width: 768px) {}
+
+@media screen and (min-width: 1024px) {}
+
+@media screen and (min-width: 1440px) {}

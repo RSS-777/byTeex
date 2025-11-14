@@ -1,20 +1,20 @@
 import { useEffect, useState } from "react";
 import { client } from "../sanityClient";
 
-type SliderImage = {
+export type SliderImage = {
   _key?: string;
   image?: any;
   caption?: string;
 };
 
-type Benefit = {
+export type Benefit = {
   _key?: string;
   icon?: any;
   title?: string;
   description?: string;
 };
 
-type TopBenefitsType = {
+export type TopBenefitsType = {
   featuredInTitle?: string;
   featuredIn?: any[];
   title?: string;
