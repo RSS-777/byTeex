@@ -2,24 +2,24 @@
 import { useEffect, useState } from "react";
 import { client } from "../sanityClient";
 
-type ImageWithAlt = {
+export type ImageWithAlt = {
   asset: any;
   alt?: string;
 };
 
-type Feature = {
+export type Feature = {
   _key?: string;
   icon?: any;
   text?: string;
 };
 
-type CTA = {
+export type CTA = {
   text?: string;
   icon?: ImageWithAlt;
   link?: string;
 };
 
-type Review = {
+export type Review = {
   author?: string;
   avatar?: ImageWithAlt;
   rating?: number;
@@ -27,7 +27,7 @@ type Review = {
   additionalInfo?: string;
 };
 
-type HeaderType = {
+export type HeaderType = {
   logo?: ImageWithAlt;
   navigationText?: string[];
   title?: string;

@@ -1,4 +1,4 @@
-import { Header } from "./components/Header";
+import { Header } from "./components/Header/Header";
 import { TopBenefits } from "./components/TopBenefits";
 import Founder from "./components/Founder";
 import ProductWorks from "./components/ProductWorks";
