@@ -33,11 +33,12 @@ export const TopBenefits: React.FC = () => {
   };
 
   return (
-    <section className="w-full bg-stone-50 py-12 lg:py-20">
+    <section className="relative w-full bg-stone-50 py-[92px] md:py-[77px] ">
+      <div className="absolute z-1 top-0 left-0 right-0 bg-gradient-to-b from-[#F9F0E5] from-18% to-transparent h-[530px]"></div>
       {topBenefits.featuredInTitle &&
         topBenefits.featuredIn &&
         topBenefits.featuredIn.length > 0 && (
-          <div className="container mx-auto px-6 mb-12">
+          <div className="relative z-2 container mx-auto px-6 mb-12">
             <p className="text-center text-sm text-gray-500 mb-6">
               {topBenefits.featuredInTitle}
             </p>
@@ -58,7 +59,7 @@ export const TopBenefits: React.FC = () => {
           </div>
         )}
 
-      <div className="container mx-auto px-6">
+      <div className="relative z-2 container mx-auto px-6">
         <div className="flex flex-col lg:flex-row items-start gap-12 lg:gap-16">
           <div className="w-full lg:w-1/2">
             {topBenefits.title && (

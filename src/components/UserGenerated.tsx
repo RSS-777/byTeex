@@ -48,7 +48,6 @@ export const UserGenerated: React.FC = () => {
   return (
     <section className="w-full bg-white py-12 lg:py-20">
       <div className="container mx-auto px-6">
-        {/* Section title and description */}
         <div className="text-center mb-12">
           {userGenerated.sectionTitle && (
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-[#0b0b3b] mb-4">
@@ -62,7 +61,6 @@ export const UserGenerated: React.FC = () => {
           )}
         </div>
 
-        {/* Image gallery */}
         {userGenerated.images && userGenerated.images.length > 0 && (
           <div className="mb-12 lg:mb-16">
             <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2 md:gap-3">
@@ -82,11 +80,9 @@ export const UserGenerated: React.FC = () => {
           </div>
         )}
 
-        {/* Reviews carousel */}
         {hasReviews && displayedReviews.length > 0 && (
           <div className="mb-12">
             <div className="flex items-center gap-4 lg:gap-6">
-              {/* Left arrow */}
               <button
                 onClick={goToPrevious}
                 className="flex-shrink-0 bg-white border border-gray-200 rounded-full p-2 hover:bg-gray-50 transition-colors z-10"
@@ -106,15 +102,12 @@ export const UserGenerated: React.FC = () => {
                   />
                 </svg>
               </button>
-
-              {/* Reviews grid */}
               <div className="flex-1 grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
                 {displayedReviews.map((review, idx) => (
                   <div
                     key={review._key || idx}
                     className="bg-gray-50 border border-gray-100 rounded-lg p-6 flex flex-col"
                   >
-                    {/* Author info */}
                     <div className="flex items-center gap-3 mb-4">
                       {review.author?.avatar && (
                         <img
@@ -139,12 +132,10 @@ export const UserGenerated: React.FC = () => {
                       </div>
                     </div>
 
-                    {/* Rating */}
                     {review.rating !== undefined && (
                       <div className="mb-3">{renderStars(review.rating)}</div>
                     )}
 
-                    {/* Review text */}
                     {review.text && (
                       <p className="text-gray-600 text-sm leading-relaxed flex-grow">
                         {review.text}
@@ -154,7 +145,6 @@ export const UserGenerated: React.FC = () => {
                 ))}
               </div>
 
-              {/* Right arrow */}
               <button
                 onClick={goToNext}
                 className="flex-shrink-0 bg-white border border-gray-200 rounded-full p-2 hover:bg-gray-50 transition-colors z-10"
@@ -178,7 +168,6 @@ export const UserGenerated: React.FC = () => {
           </div>
         )}
 
-        {/* CTA Button */}
         <div className="flex flex-col items-center gap-6 mb-8">
           {userGenerated.ctaButton && (
             <a
@@ -197,7 +186,6 @@ export const UserGenerated: React.FC = () => {
           )}
         </div>
 
-        {/* Reviews info (stars + count) */}
         {userGenerated.reviewsInfo && (
           <div className="flex items-center justify-center gap-2 text-center">
             {userGenerated.reviewsInfo.stars !== undefined && (

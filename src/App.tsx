@@ -9,18 +9,18 @@ import Final from "./components/Final";
 
 const App = () => {
   return (
-    <>
-      <div>
-        <Header />
-        <TopBenefits  />
+    <div className="max-w-[1464px] mx-auto">
+      <Header />
+      <main>
+        <TopBenefits />
         <Founder />
         <ProductWorks />
         <UserGenerated />
         <Faq />
         <Banner />
         <Final />
-      </div>
-    </>
+      </main>
+    </div>
   );
 };
 

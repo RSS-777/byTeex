@@ -2,6 +2,11 @@
 import { useEffect, useState } from "react";
 import { client } from "../sanityClient";
 
+type ImageWithAlt = {
+  asset: any;
+  alt?: string;
+};
+
 type Feature = {
   _key?: string;
   icon?: any;
@@ -10,26 +15,26 @@ type Feature = {
 
 type CTA = {
   text?: string;
-  icon?: any;
+  icon?: ImageWithAlt;
   link?: string;
 };
 
 type Review = {
   author?: string;
+  avatar?: ImageWithAlt;
   rating?: number;
   text?: string;
   additionalInfo?: string;
 };
 
 type HeaderType = {
-  logo?: any;
-  log?: any;
+  logo?: ImageWithAlt;
   navigationText?: string[];
   title?: string;
   features?: Feature[];
   ctaButton?: CTA;
   review?: Review;
-  images?: any[];
+  images?: ImageWithAlt[];
 };
 
 export const useHeader = () => {
@@ -37,7 +42,7 @@ export const useHeader = () => {
 
   useEffect(() => {
     const query = `*[_type == "header"][0]{
-      logo, log, navigationText, title, features[]{icon, text}, ctaButton{ text, icon, link }, review{author, rating, text, additionalInfo}, images
+      logo, navigationText, title, features[]{icon, text}, ctaButton{ text, icon, link }, review{author, avatar{asset, alt}, rating, text, additionalInfo}, images
     }`;
 
     client
