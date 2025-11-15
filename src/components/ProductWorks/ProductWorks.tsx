@@ -13,7 +13,7 @@ export const ProductWorks = () => {
     return <p className="p-6 text-center">No product works data found</p>;
 
   return (
-    <section className="w-full max-w-[1120px] mx-auto bg-white pt-[57px] md:pt-[75px] px-[14px] overflow-hidden">
+    <section className="w-full max-w-[1120px] mx-auto bg-white pt-[57px] md:pt-[75px] px-[14px] lg:px-[41px] overflow-hidden">
       {productWorks.title && (
         <h2 className="text-center">{productWorks.title}</h2>
       )}

@@ -1,18 +1,24 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+
 interface ProductWorksSliderProps {
   children?: React.ReactNode;
 }
 
 export const ProductWorksSlider = ({ children }: ProductWorksSliderProps) => {
   const [position, setPosition] = useState<number>(0);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 1024);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 1024);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const goToNext = () => {
     setPosition((prev) => (prev !== 576 ? (prev += 288) : 576));
-    console.log(position);
   };
   const goToPrevious = () => {
     setPosition((prev) => (prev !== 0 ? (prev -= 288) : 0));
-    console.log(position);
   };
 
   return (
@@ -20,14 +26,14 @@ export const ProductWorksSlider = ({ children }: ProductWorksSliderProps) => {
       <div className="relative overflow-hidden w-[288px] h-[288px] lg:w-full lg:h-auto  rounded-lg">
         <div
           className={`absolute lg:relative top-0 flex gap-0 lg:gap-[40px] min-w-[864px]`}
-          style={{ left: `${-position}px` }}
+          style={{ left: isMobile ? `${-position}px` : undefined }}
         >
           {children}
         </div>
       </div>
       <button
         onClick={goToPrevious}
-        className="absolute left-[-20px] min-[380px]:left-[-30px] top-1/2 transform -translate-y-1/2 z-10 cursor-pointer"
+        className="absolute left-[-20px] min-[380px]:left-[-30px] top-1/2 transform -translate-y-1/2 z-10 cursor-pointer lg:hidden"
         aria-label="Previous image"
       >
         <svg
@@ -46,10 +52,9 @@ export const ProductWorksSlider = ({ children }: ProductWorksSliderProps) => {
           />
         </svg>
       </button>
-
       <button
         onClick={goToNext}
-        className="absolute right-[-28px] min-[380px]:right-[-38px] top-1/2 transform -translate-y-1/2 p-2 z-10 cursor-pointer"
+        className="absolute right-[-28px] min-[380px]:right-[-38px] top-1/2 transform -translate-y-1/2 p-2 z-10 cursor-pointer lg:hidden"
         aria-label="Next image"
       >
         <svg
