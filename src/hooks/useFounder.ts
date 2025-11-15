@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import { client } from "../sanityClient";
 
-type CTAButton = {
+export type CTAButton = {
   text?: string;
   link?: string;
 };
 
-type FounderType = {
+export type FounderType = {
   title?: string;
   description?: string[];
   mainImage?: any;
