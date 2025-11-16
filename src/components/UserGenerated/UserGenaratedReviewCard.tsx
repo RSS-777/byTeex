@@ -6,11 +6,13 @@ import type { Review } from "../../hooks/useUserGenerated";
 interface ReviewCardProps {
   review: Review;
   onHeight?: (h: number) => void;
+  style?: React.CSSProperties;
 }
 
 export const UserGenaratedReviewCard = ({
   review,
   onHeight,
+  style
 }: ReviewCardProps) => {
   const ref = useRef<HTMLDivElement>(null);
 
@@ -23,7 +25,8 @@ export const UserGenaratedReviewCard = ({
   return (
     <div
       ref={ref}
-      className="bg-[#FFFFFF] lg:border border-[#EAEAEA] lg:shadow-[0px_3px_10px_1px_#00000014] lg:rounded-lg p-8 flex flex-col w-full max-w-[299px] lg:max-w-[338px] h-[fit-content]"
+      style={style}
+      className="bg-[#FFFFFF] lg:border border-[#EAEAEA] lg:shadow-[0px_3px_10px_1px_#00000014] lg:rounded-lg p-8 flex flex-col w-full h-[fit-content]"
     >
       <div className="flex items-center gap-3 mb-4">
         {review.author?.avatar && (

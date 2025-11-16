@@ -2,17 +2,47 @@ import React, { useState, useEffect } from "react";
 
 interface UserGeneratedSliderProps {
   children?: React.ReactNode;
+  desktopSlideMaxWidth?: number;
+  modileSlideMaxWidth?: number;
+  visibleSlidesDesktop?: number;
 }
 
-export const UserGeneratedSlider = ({ children }: UserGeneratedSliderProps) => {
+export const UserGeneratedSlider = ({
+  children,
+  modileSlideMaxWidth = 299,
+  desktopSlideMaxWidth = 338,
+  visibleSlidesDesktop = 3,
+}: UserGeneratedSliderProps) => {
   const [position, setPosition] = useState<number>(0);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 1024);
   const [activeDot, setActiveDot] = useState<number>(0);
   const [heights, setHeights] = useState<number[]>([]);
-  const [activeSlideHeight, setActiveSlideHeight] = useState<number | undefined>(undefined);
+  const [activeSlideHeight, setActiveSlideHeight] = useState<
+    number | undefined
+  >(undefined);
+  const [gapDesktop, setGapDesktop] = useState<number>(40);
+  const [slideWidthDesktop, setSlideWidthDesktop] =
+    useState<number>(desktopSlideMaxWidth);
+  const [slideWidthMobile, setSlideWidthMobile] =
+    useState<number>(modileSlideMaxWidth);
+  const padding = 16;
   const slideCount = React.Children.count(children);
-  const slideStep = 299;
+  const slideStep = isMobile ? slideWidthMobile : slideWidthDesktop;
+  const slideFullStep =
+    (isMobile ? slideWidthMobile : slideWidthDesktop) +
+    (isMobile ? 0 : gapDesktop);
   const minHeight = heights.length > 0 ? Math.min(...heights) : undefined;
+  const minWidthContainer = isMobile
+    ? slideStep * slideCount
+    : slideStep * slideCount + (gapDesktop * slideCount - 1) + padding;
+  const maxPosition = isMobile
+    ? (slideCount - 1) * slideStep
+    : (slideCount - visibleSlidesDesktop) * (slideStep + gapDesktop);
+  const widthSlider = isMobile
+    ? slideStep
+    : slideStep * visibleSlidesDesktop +
+      gapDesktop * (visibleSlidesDesktop - 1) +
+      padding;
 
   const handleCardHeight = (idx: number, h: number) => {
     setHeights((prev) => {
@@ -29,7 +59,28 @@ export const UserGeneratedSlider = ({ children }: UserGeneratedSliderProps) => {
   }, [activeDot, heights]);
 
   useEffect(() => {
-    const handleResize = () => setIsMobile(window.innerWidth < 1024);
+    const handleResize = () => {
+      const w = window.innerWidth;
+      setIsMobile(w < 1024);
+
+      setSlideWidthDesktop(
+        Math.min(
+          desktopSlideMaxWidth,
+          Math.max(200, (w / 1465) * desktopSlideMaxWidth)
+        )
+      );
+
+      setSlideWidthMobile(
+        Math.min(
+          modileSlideMaxWidth,
+          Math.max(100, (w / 430) * modileSlideMaxWidth)
+        )
+      );
+      setGapDesktop(w >= 1200 ? 40 : w >= 768 ? 20 : 10);
+      setPosition(0);
+    };
+
+    handleResize();
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
@@ -40,11 +91,14 @@ export const UserGeneratedSlider = ({ children }: UserGeneratedSliderProps) => {
   }, [position]);
 
   const goToNext = () => {
-    setPosition((prev) => (prev !== 598 ? prev + slideStep : 598));
+    setPosition((prev) => {
+      const next = prev + slideFullStep;
+      return next <= maxPosition ? next : maxPosition;
+    });
   };
 
   const goToPrevious = () => {
-    setPosition((prev) => (prev !== 0 ? prev - slideStep : 0));
+    setPosition((prev) => Math.max(prev - slideFullStep, 0));
   };
 
   const goToSlide = (index: number) => {
@@ -54,12 +108,23 @@ export const UserGeneratedSlider = ({ children }: UserGeneratedSliderProps) => {
 
   return (
     <div className="relative w-[fit-content] mt-[37px] md:mt-[75px] mx-auto border border-[#EAEAEA] lg:border-none shadow-[0px_3px_10px_1px_#00000014] rounded-lg lg:shadow-none lg:rounded-none">
-      <div className="relative overflow-hidden w-[299px] h-auto lg:w-full lg:h-auto lg:py-2 lg:px-2 xl:px-8 rounded-lg">
+      <div
+        className="relative overflow-hidden h-auto lg:h-auto lg:py-2 lg:px-2 rounded-lg"
+        style={{ width: widthSlider }}
+      >
         <div
-          className="relative lg:relative top-0 flex gap-0 lg:gap-[40px] min-w-[897px]"
+          key={
+            isMobile
+              ? `mobile-${slideWidthMobile}`
+              : `desktop-${slideWidthDesktop}`
+          }
+          className="flex gap-0 lg:gap-[40px]"
           style={{
-            left: isMobile ? `${-position}px` : undefined,
+            transform: `translateX(-${position}px)`,
             height: isMobile ? `${activeSlideHeight}px` : "auto",
+            minWidth: minWidthContainer,
+            gap: isMobile ? 0 : gapDesktop,
+            transition: "transform 0.4s ease, height 0.4s ease",
           }}
         >
           {React.Children.map(children, (child, idx) =>
@@ -67,9 +132,14 @@ export const UserGeneratedSlider = ({ children }: UserGeneratedSliderProps) => {
               ? React.cloneElement(
                   child as React.ReactElement<{
                     onHeight?: (h: number) => void;
+                    style?: React.CSSProperties;
                   }>,
                   {
                     onHeight: (h: number) => handleCardHeight(idx, h),
+                    style: {
+                      width: isMobile ? slideWidthMobile : slideWidthDesktop,
+                      flexShrink: 0,
+                    },
                   }
                 )
               : child
@@ -79,19 +149,20 @@ export const UserGeneratedSlider = ({ children }: UserGeneratedSliderProps) => {
 
       <button
         onClick={goToPrevious}
-        className="absolute left-[-30px] max-[390px]:left-0  max-[1024px]:left-[-40px]  transform -translate-y-1/2 z-10 cursor-pointer"
+        className="absolute left-[-58px] max-[390px]:left-[-38px] transform -translate-y-1/2 p-2 z-10 cursor-pointer"
         style={{
           top:
             minHeight && !isMobile
-              ? `${minHeight / 2}px`
+              ? `${minHeight / 2 + 12}px`
               : activeSlideHeight
               ? `${activeSlideHeight / 2}px`
               : "50%",
         }}
+        disabled={position === 0}
         aria-label="Previous image"
       >
         <svg
-          className={`w-8 h-8 ${
+          className={`w-6 h-6 ${
             position === 0 ? "text-[#C5C5C5]" : "text-[#676869]"
           }`}
           fill="none"
@@ -109,20 +180,21 @@ export const UserGeneratedSlider = ({ children }: UserGeneratedSliderProps) => {
 
       <button
         onClick={goToNext}
-        className="absolute right-[-38px] max-[390px]:right-[-5px]  max-[1024px]:right-[-48px] transform -translate-y-1/2 p-2 z-10 cursor-pointer"
+        className="absolute right-[-58px] max-[390px]:right-[-38px] transform -translate-y-1/2 p-2 z-10 cursor-pointer"
         style={{
           top:
             minHeight && !isMobile
-              ? `${minHeight / 2}px`
+              ? `${minHeight / 2 + 12}px`
               : activeSlideHeight
               ? `${activeSlideHeight / 2}px`
               : "50%",
         }}
+        disabled={position === maxPosition}
         aria-label="Next image"
       >
         <svg
-          className={`w-8 h-8 ${
-            position === 598 ? "text-[#C5C5C5]" : "text-[#676869]"
+          className={`w-6 h-6 ${
+            position === maxPosition ? "text-[#C5C5C5]" : "text-[#676869]"
           }`}
           fill="none"
           stroke="currentColor"

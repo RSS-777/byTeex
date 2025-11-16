@@ -13,6 +13,11 @@ export const UserGenerated = () => {
   if (!userGenerated)
     return <p className="p-6 text-center">No user generated content found</p>;
 
+  const doubledReviews = [
+    ...(userGenerated.reviews ?? []),
+    ...(userGenerated.reviews ?? []),
+  ]; // For test.
+
   return (
     <section className="w-full bg-white py-12 lg:py-20 pt-[59px] md:pt-[74px]">
       <div className="text-center mb-12">
@@ -25,9 +30,13 @@ export const UserGenerated = () => {
         </p>
       </div>
       <UserGeneratedImages images={userGenerated.images ?? []} />
-      <div className="px-[10px] overflow-hidden md:px-[30px]">
-        <UserGeneratedSlider >
-          {userGenerated.reviews?.map((review, idx) => (
+      <div className="px-[20px]">
+        <UserGeneratedSlider
+          visibleSlidesDesktop={3}
+          modileSlideMaxWidth={299}
+          desktopSlideMaxWidth={338}
+        >
+          {doubledReviews.map((review, idx) => (
             <UserGenaratedReviewCard key={review._key || idx} review={review} />
           ))}
         </UserGeneratedSlider>
