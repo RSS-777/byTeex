@@ -2,7 +2,7 @@ import { Header } from "./components/Header/Header";
 import { TopBenefits } from "./components/TopBenefits/TopBenefits";
 import Founder from "./components/Founder/Founder";
 import ProductWorks from "./components/ProductWorks/ProductWorks";
-import UserGenerated from "./components/UserGenerated";
+import UserGenerated from "./components/UserGenerated/UserGenerated";
 import Faq from "./components/Faq";
 import Banner from "./components/Banner";
 import Final from "./components/Final";

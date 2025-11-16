@@ -6,7 +6,7 @@ type ReviewAuthor = {
   avatar?: any;
 };
 
-type Review = {
+export type Review = {
   _key?: string;
   author?: ReviewAuthor;
   rating?: number;
