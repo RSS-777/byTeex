@@ -8,10 +8,20 @@ type Question = {
   isExpanded?: boolean;
 };
 
-type FaqType = {
+export type FaqType = {
   title?: string;
   questions?: Question[];
   images?: any[];
+
+  ctaButton?: {
+    text?: string;
+    link?: string;
+  };
+
+  reviewsInfo?: {
+    stars?: number;
+    reviewCount?: string;
+  };
 };
 
 export const useFaq = () => {
@@ -26,7 +36,15 @@ export const useFaq = () => {
         answer,
         isExpanded
       },
-      images
+      images,
+      ctaButton{
+        text,
+        link
+      },
+      reviewsInfo{
+        stars,
+        reviewCount
+      }
     }`;
 
     client

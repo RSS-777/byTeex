@@ -19,7 +19,7 @@ export const UserGenerated = () => {
   ]; // For test.
 
   return (
-    <section className="w-full bg-white py-12 lg:py-20 pt-[59px] md:pt-[74px]">
+    <section className="w-full bg-white pt-[59px] md:pt-[74px]">
       <div className="text-center mb-12">
         <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-[#0b0b3b] mx-3">
           {userGenerated.sectionTitle}
