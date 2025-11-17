@@ -9,14 +9,14 @@ import { ReviewCard } from "./ReviewCard";
 
 export const Header = () => {
   const headerData = useHeader();
-  const [windowWidth, setWindowWidth] = useState<number>(1024);
+  const [windowWidth, setWindowWidth] = useState<number>(typeof window !== "undefined" ? window.innerWidth : 1024);
 
   useEffect(() => {
     const handleResize = () => setWindowWidth(window.innerWidth);
     window.addEventListener("resize", handleResize);
 
     return () => window.removeEventListener("resize", handleResize);
-  });
+  },[]);
 
   if (!headerData) return <p className="p-6 text-center">Loading header...</p>;
 

@@ -7,7 +7,7 @@ export const HeaderAnnouncementBar = ({
   navigationText,
   windowWidth,
 }: Props) => {
-  if (!navigationText || navigationText.length === 0) return null;
+ if (!navigationText || navigationText.length === 0 || windowWidth === 0) return null;
 
   return (
     <div className="bg-[#F9F0E5] h-[36px] flex justify-center items-center">
