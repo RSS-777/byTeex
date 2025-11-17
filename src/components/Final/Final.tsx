@@ -1,5 +1,5 @@
-import { useFinal } from "../hooks/useFinal";
-import { urlFor } from "../sanityClient";
+import { useFinal } from "../../hooks/useFinal";
+import { urlFor } from "../../sanityClient";
 
 export const Final = () => {
   const { finalCTA, loading } = useFinal();

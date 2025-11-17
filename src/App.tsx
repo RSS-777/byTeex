@@ -5,7 +5,7 @@ import ProductWorks from "./components/ProductWorks/ProductWorks";
 import UserGenerated from "./components/UserGenerated/UserGenerated";
 import Faq from "./components/Faq/Faq";
 import Banner from "./components/Banner";
-import Final from "./components/Final";
+import Final from "./components/Final/Final";
 
 const App = () => {
   return (
