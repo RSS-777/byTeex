@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useHeader } from "../../hooks/useHeader";
 import { HeaderAnnouncementBar } from "./HeaderAnnouncementBar";
 import { Logo } from "./Logo";
-import { HeroImages } from "./HeroImages";
+import { HeroImages } from "../HeroImages";
 import { Features } from "./Features";
 import { PrimaryLinkButton } from "../PrimaryLinkButton";
 import { ReviewCard } from "./ReviewCard";

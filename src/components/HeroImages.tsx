@@ -1,5 +1,5 @@
-import { urlFor } from "../../sanityClient";
-import type { ImageWithAlt } from "../../hooks/useHeader";
+import { urlFor } from "../sanityClient";
+import type { ImageWithAlt } from "../hooks/useHeader";
 
 export const HeroImages = ({ images }: { images?: ImageWithAlt[] }) => {
   if (!images || images.length < 3) return null;
@@ -11,7 +11,7 @@ export const HeroImages = ({ images }: { images?: ImageWithAlt[] }) => {
         <img
           src={urlFor(images[2]).width(800).url()}
           alt={images[2].alt || "left image"}
-          className="w-52 md:w-64 lg:w-72 aspect-[3/4] object-cover shadow-lg"
+          className="w-52 md:w-64 lg:w-72 aspect-[3/4] object-cover"
         />
         <div className="absolute inset-0 -z-10 bg-[#F9F0E5]/40"></div>
       </div>
@@ -19,7 +19,7 @@ export const HeroImages = ({ images }: { images?: ImageWithAlt[] }) => {
         <img
           src={urlFor(images[1]).width(800).url()}
           alt={images[1].alt || "center image"}
-          className="w-60 md:w-80 lg:w-[22rem] aspect-[3/4] object-cover shadow-xl"
+          className="w-60 md:w-80 lg:w-[22rem] aspect-[3/4] object-cover"
         />
         <div className="absolute inset-0 -z-10 bg-[#F9F0E5]/50"></div>
       </div>
@@ -27,7 +27,7 @@ export const HeroImages = ({ images }: { images?: ImageWithAlt[] }) => {
         <img
           src={urlFor(images[0]).width(800).url()}
           alt={images[0].alt || "right image"}
-          className="w-52 md:w-64 lg:w-72 aspect-[3/4] object-cover  shadow-md"
+          className="w-52 md:w-64 lg:w-72 aspect-[3/4] object-cover"
         />
         <div className="absolute inset-0 -z-10 bg-[#F9F0E5]/40"></div>
       </div>

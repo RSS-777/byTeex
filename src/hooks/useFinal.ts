@@ -7,14 +7,19 @@ type CTAButton = {
   icon?: any;
 };
 
-type ShippingInfo = {
+export type ShippingInfo = {
   icon?: any;
   text?: string;
 };
 
-type AdditionalBenefit = {
+export type AdditionalBenefit = {
   _key?: string;
   icon?: any;
+  text?: string;
+};
+
+type StarReviews = {
+  stars?: number;
   text?: string;
 };
 
@@ -23,6 +28,7 @@ type FinalCTAType = {
   subtitle?: string;
   mainImages?: any[];
   ctaButton?: CTAButton;
+  starReviews?: StarReviews;
   shippingInfo?: ShippingInfo;
   paymentMethods?: any[];
   additionalBenefits?: AdditionalBenefit[];
@@ -41,6 +47,10 @@ export const useFinal = () => {
         text,
         link,
         icon
+      },
+      starReviews{
+        stars,
+        text
       },
       shippingInfo{
         icon,

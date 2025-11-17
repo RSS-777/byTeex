@@ -14,6 +14,7 @@ export const LogosCarousel = ({ logos }: Props) => {
         modules={[Pagination]} 
         spaceBetween={16}
         slidesPerView={5}
+        speed={500}
         breakpoints={{
           0:   { slidesPerView: 3 },
           768: { slidesPerView: 4 },

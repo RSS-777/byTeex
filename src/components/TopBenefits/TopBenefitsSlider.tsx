@@ -44,7 +44,7 @@ export const TopBenefitsSlider: React.FC<TopBenefitsSliderProps> = ({
           <img
             src={urlFor(currentImage.image).width(500).url()}
             alt={currentImage.caption || "Product"}
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover "
           />
         </div>
 
@@ -53,7 +53,6 @@ export const TopBenefitsSlider: React.FC<TopBenefitsSliderProps> = ({
             {currentImage.caption}
           </p>
         )}
-
         <button
           onClick={goToPrevious}
           className="absolute left-[-30px] top-1/2 transform -translate-y-1/2 z-10 cursor-pointer"
@@ -73,7 +72,6 @@ export const TopBenefitsSlider: React.FC<TopBenefitsSliderProps> = ({
             />
           </svg>
         </button>
-
         <button
           onClick={goToNext}
           className="absolute right-[-38px] top-1/2 transform -translate-y-1/2 p-2 z-10 cursor-pointer"
@@ -94,7 +92,6 @@ export const TopBenefitsSlider: React.FC<TopBenefitsSliderProps> = ({
           </svg>
         </button>
       </div>
-
       <div className="absolute bottom-[40px] flex gap-2 flex-wrap justify-center">
         {images.map((img, idx) => (
           <button

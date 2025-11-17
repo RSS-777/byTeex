@@ -25,7 +25,7 @@ export const ProductWorksSlider = ({ children }: ProductWorksSliderProps) => {
     <div className="relative w-[fit-content] mt-[23px] lg:mt-[46px] mx-auto">
       <div className="relative overflow-hidden w-[288px] h-[288px] lg:w-full lg:h-auto  rounded-lg">
         <div
-          className={`absolute lg:relative top-0 flex gap-0 lg:gap-[40px] min-w-[864px]`}
+          className={`absolute lg:relative top-0 flex gap-0 lg:gap-[40px] min-w-[864px] transition-all duration-300 ease-in-out`}
           style={{ left: isMobile ? `${-position}px` : undefined }}
         >
           {children}
