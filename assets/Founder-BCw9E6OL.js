@@ -1,0 +1,10 @@
+import{r as n,c as i,j as t,u as o,P as x}from"./index-DiBZjKyR.js";const c=()=>{const[e,l]=n.useState(null),[s,a]=n.useState(!0);return n.useEffect(()=>{i.fetch(`*[_type == "founder"][0]{
+      title,
+      description,
+      mainImage,
+      additionalImages,
+      ctaButton{
+        text,
+        link
+      }
+    }`).then(r=>{l(r),a(!1)}).catch(r=>{console.error("Sanity fetch error:",r),a(!1)})},[]),{founder:e,loading:s}},u=({main:e,additional:l=[]})=>e?t.jsxs("div",{className:"relative lg:top-auto w-full max-w-[381px] mx-auto lg:mx-0 lg:ml-20  px-6 lg:px-0",children:[t.jsx("img",{src:o(e).width(400).url(),alt:"main",className:"w-full h-auto object-cover"}),t.jsx("img",{src:o(l[0]).width(200).url(),alt:"additionall 1",className:"absolute top-0 left-0 w-[clamp(101px,20vw,155px)] object-cover transform -translate-x-1/4 -translate-y-1/4"}),t.jsx("img",{src:o(l[1]).width(200).url(),alt:"Additional 2",className:"absolute bottom-0 right-0 w-[clamp(109px,20vw,128px)] h-[clamp(111px,20vw,175px)] object-cover transform translate-x-1/4 translate-y-1/4"})]}):null,d=()=>{const{founder:e,loading:l}=c();return l?t.jsx("p",{className:"p-6 text-center",children:"Loading founder section..."}):e?t.jsx("section",{className:"w-full bg-[#F0EEEF] pt-[39px] lg:pt-[113px] pb-[14px] lg:pb-[95px] px-[37px]",children:t.jsxs("div",{className:" relative flex flex-col lg:flex-row lg:justify-evenly items-start gap-8 lg:gap-16 pt-[130px] lg:pt-[0px]",children:[t.jsx(u,{main:e.mainImage,additional:e.additionalImages}),t.jsxs("div",{className:"w-full max-w-[641px] mx-auto lg:mx-0 mt-[76px] lg:mt-0",children:[t.jsx("h2",{className:"absolute left-1/2 -translate-x-1/2 text-center lg:text-left w-full lg:relative top-[39px] lg:top-auto text-[#2A2996]  mb-6",children:e.title}),e.description?.map((s,a)=>t.jsx("p",{className:"text-[15px] leading-[23px] mb-6 text-[#6C6C6C]",children:s},a)),t.jsx(x,{link:e.ctaButton?.link||"#",text:"Customize Your Outfit",classNameSpan:"invisible",classNameButton:"ml-0 hidden lg:flex"})]})]})}):t.jsx("p",{className:"p-6 text-center",children:"No founder data found"})};export{d as Founder,d as default};
