@@ -1,4 +1,4 @@
-import{r as i,c as x,j as e,u as d,P as u,S as p}from"./index-DetCVtuM.js";const m=()=>{const[t,s]=i.useState(null),[r,o]=i.useState(!0);return i.useEffect(()=>{x.fetch(`*[_type == "howToOrder"][0]{
+import{r as i,c as x,j as e,u as d,P as u,S as p}from"./index-BSe5Swf1.js";const m=()=>{const[t,s]=i.useState(null),[r,o]=i.useState(!0);return i.useEffect(()=>{x.fetch(`*[_type == "howToOrder"][0]{
       title,
       steps[]{
         icon,

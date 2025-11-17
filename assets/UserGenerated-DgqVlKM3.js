@@ -1,4 +1,4 @@
-import{r,c as P,j as e,u as y,S as E,R as b,P as U}from"./index-DetCVtuM.js";const H=()=>{const[t,c]=r.useState(null),[i,a]=r.useState(!0);return r.useEffect(()=>{P.fetch(`*[_type == "userGeneratedContent"][0]{
+import{r,c as P,j as e,u as y,S as E,R as b,P as U}from"./index-BSe5Swf1.js";const H=()=>{const[t,c]=r.useState(null),[i,a]=r.useState(!0);return r.useEffect(()=>{P.fetch(`*[_type == "userGeneratedContent"][0]{
       sectionTitle,
       sectionDescription,
       images,

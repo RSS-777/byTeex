@@ -1,4 +1,4 @@
-import{r as n,c as i,j as t,u as o,P as x}from"./index-DetCVtuM.js";const c=()=>{const[e,l]=n.useState(null),[s,a]=n.useState(!0);return n.useEffect(()=>{i.fetch(`*[_type == "founder"][0]{
+import{r as n,c as i,j as t,u as o,P as x}from"./index-BSe5Swf1.js";const c=()=>{const[e,l]=n.useState(null),[s,a]=n.useState(!0);return n.useEffect(()=>{i.fetch(`*[_type == "founder"][0]{
       title,
       description,
       mainImage,

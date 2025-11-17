@@ -1,4 +1,4 @@
-import{r,c,j as e,u as x,P as o,S as d}from"./index-DetCVtuM.js";const m=()=>{const[t,l]=r.useState(null),[i,n]=r.useState(!0);return r.useEffect(()=>{c.fetch(`*[_type == "faq"][0]{
+import{r,c,j as e,u as x,P as o,S as d}from"./index-BSe5Swf1.js";const m=()=>{const[t,l]=r.useState(null),[i,n]=r.useState(!0);return r.useEffect(()=>{c.fetch(`*[_type == "faq"][0]{
       title,
       questions[]{
         question,

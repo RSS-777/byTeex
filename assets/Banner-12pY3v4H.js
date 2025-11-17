@@ -1,4 +1,4 @@
-import{r as a,c as l,j as t,u as o}from"./index-DetCVtuM.js";const x=()=>{const[r,s]=a.useState(null),[e,n]=a.useState(!0);return a.useEffect(()=>{l.fetch(`*[_type == "infoBanner"][0]{
+import{r as a,c as l,j as t,u as o}from"./index-BSe5Swf1.js";const x=()=>{const[r,s]=a.useState(null),[e,n]=a.useState(!0);return a.useEffect(()=>{l.fetch(`*[_type == "infoBanner"][0]{
       title,
       stats[]{
         icon,
